@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, constr
+from typing import Union
 
 class User(BaseModel):
     name: str
@@ -11,3 +12,7 @@ class User(BaseModel):
     class Config:
         validate_assignment = True
         
+class UserDb(BaseModel):
+    name: str
+    email: EmailStr
+    password: Union[str, bytes]

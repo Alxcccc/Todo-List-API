@@ -9,7 +9,7 @@ class User(Base):
     idUsers = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50))
     email = Column(String(50))
-    password = Column(String(20))
+    password = Column(String(60))
     
     tasks = relationship("Task", back_populates="user")
     
