@@ -1,8 +1,12 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from typing import Annotated
+
 from models.user import User
+from routes.login import oauth2_scheme
+
 
 router = APIRouter(prefix="/api")
 
-@router.get('/{id}/todos', summary='All tasks', tags=["CRUD todo list"],)
-async def get_tasks(id: int):
-    return {'message': id}
+@router.get('/todos', summary='All tasks', tags=["CRUD todo list"],)
+async def get_tasks(token: Annotated[str, Depends(oauth2_scheme)]):
+    return {'message': "awo"}

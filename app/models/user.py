@@ -1,5 +1,4 @@
 from pydantic import BaseModel, EmailStr, constr
-from typing import Optional
 
 class User(BaseModel):
     name: str
