@@ -1,14 +1,15 @@
-from datetime import datetime, timedelta, timezone
-import jwt
-from typing import Union
 import os
+from datetime import datetime, timedelta, timezone
+from typing import Union
+
+import jwt
 
 
-class Token():
+class Token:
     def __init__(self):
-        self.SECRET_KEY = os.getenv('SECRET_KEY')
+        self.SECRET_KEY = os.getenv("SECRET_KEY")
         self.ALGORITHM = "HS256"
-        
+
     def create_token(self, data: dict, expires_delta: Union[timedelta, None] = None):
         to_encode = data.copy()
         if expires_delta:
@@ -18,7 +19,7 @@ class Token():
         to_encode.update({"exp": expire})
         encoded_jwt = jwt.encode(to_encode, self.SECRET_KEY, self.ALGORITHM)
         return encoded_jwt
-    
+
     def decode_token(self, token):
         token = jwt.decode(token, self.SECRET_KEY, self.ALGORITHM)
         decode = token.get("sub")
