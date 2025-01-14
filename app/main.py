@@ -10,4 +10,4 @@ app.include_router(register.router)
 
 @app.get('/')
 def main():
-    return {'message': 'Hello word'}
+    return {'message': 'This is API for ToDo list'}

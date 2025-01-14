@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta, timezone
 import jwt
-from jwt.exceptions import InvalidTokenError
-from passlib.context import CryptContext
 from typing import Union
 import os
 
@@ -9,7 +7,7 @@ import os
 class Token():
     def __init__(self):
         self.SECRET_KEY = os.getenv('SECRET_KEY')
-        self.ALGORITHM = os.getenv('ALGORITHM')
+        self.ALGORITHM = "HS256"
         
     def create_token(self, data: dict, expires_delta: Union[timedelta, None] = None):
         to_encode = data.copy()
@@ -24,4 +22,4 @@ class Token():
     def decode_token(self, token):
         token = jwt.decode(token, self.SECRET_KEY, self.ALGORITHM)
         decode = token.get("sub")
-        return decode
+        return int(decode)

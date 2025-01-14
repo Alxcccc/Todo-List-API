@@ -5,7 +5,7 @@ from models.user import User, UserDb
 
 router = APIRouter(prefix="/api")
 
-@router.post('/register', summary='register', tags=["register"],)
+@router.post('/register', summary='register', tags=["Register"],)
 async def register(user: User):
     db = DataBase()
     user = UserDb(**user.dict())

@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 from db.database import DataBase
-from models.token import Token
+from auth.token import Token
 
 load_dotenv()
 
