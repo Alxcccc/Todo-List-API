@@ -9,11 +9,13 @@ from models.task import TaskUpdate
 
 # Models FastApi
 from models.user import User as UserFastApi
+
+# SqlAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.exc import NoResultFound, SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("mysql+pymysql://root:facebookalec7@localhost/todolist")
+engine = create_engine("mysql+pymysql://<youruser>:<yourpassword>@localhost/todolist")
 
 
 class DataBase:
